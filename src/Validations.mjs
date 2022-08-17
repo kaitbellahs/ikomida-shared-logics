@@ -31,7 +31,6 @@ export default class Validations {
         if (rest != Finances.toNumber(cpf.substring(10, 11))) return false;
         return true;
     }
-
     static validateCNPJ(cnpj) {
         cnpj = cnpj.replace(/[^\d]+/g, "")
         if (cnpj == "") return false;
@@ -74,9 +73,8 @@ export default class Validations {
 
         return true;
     }
-
     static validateAddress(object) {
-        if ((Finances.toNumber(object?.postalCode)?.length ?? 0) !== 8) {
+        if (!Validations.validateCEP(object?.postalCode)) {
             return [false, "CEP incorreto"];
         } else if (
             (object?.street?.length ?? 0) < 3 ||
@@ -98,7 +96,6 @@ export default class Validations {
         }
         return [true, null];
     }
-
     static validateEmail(email) {
         return (String(email)
             .toLowerCase()
@@ -106,19 +103,20 @@ export default class Validations {
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             ))?.length === 9;
     }
-
     static validatePassword(password) {
         return (String(password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,40}$/))?.length === 1
     }
-
     static validatePhone(phone) {
         return String(Finances.toNumber(phone)).length === 11;
     }
-
     static validateUUID(uuid) {
         return (String(uuid).match(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i))?.length === 1;
     }
     static validateCEP(cep) {
         return (Finances.toNumber(cep)?.length ?? 0) === 8;
+    }
+    static validateDate(string) {
+        const date = new Date(string);
+        return date instanceof Date && !isNaN(date);
     }
 }

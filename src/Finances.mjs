@@ -16,7 +16,7 @@ export default class Finances {
         return string.length < max ? pad("0" + string, max) : string
     }
 
-    static Random(min, max) {
+    static random(min, max) {
         return Math.ceil(Math.random() * (max - min + 1) + min)
     }
 
@@ -59,11 +59,10 @@ export default class Finances {
     }
 
     static formatWeight(weight) {
-        weight /= 100
         if (weight < 1000) {
-            return `${weight}g`
+            return `${weight} g`
         } else {
-            return `${(weight / 1000).toFixed(1)} kg`
+            return `${(weight / 1000).toFixed(1)} Kg`
         }
     }
 }
