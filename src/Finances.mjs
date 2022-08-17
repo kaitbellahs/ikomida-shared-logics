@@ -40,7 +40,7 @@ export default class Finances {
         if (matches) {
             string = matches.join("")
         }
-        string = String(Math.ceil(Number(string)))
+        string = String(Math.ceil(Number(string) * 100))
         matches = String(string).match(/\d+/g)
         if (matches) {
             return (Math.ceil(parseInt(matches.join(""), 10) * 0.01)).toFixed(2)
