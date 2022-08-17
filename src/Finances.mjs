@@ -13,7 +13,7 @@ export default class Finances {
 
     static pad(string, max) {
         string = string.toString()
-        return string.length < max ? pad("0" + string, max) : string
+        return string.length < max ? Finances.pad("0" + string, max) : string
     }
 
     static random(min, max) {
