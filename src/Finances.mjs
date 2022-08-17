@@ -40,17 +40,7 @@ export default class Finances {
         if (matches) {
             string = matches.join("")
         }
-        let indexOfPoint = string.indexOf('.')
-        if (indexOfPoint < 0) {
-            string = string.replace(",", ".")
-        }
-        indexOfPoint = string.indexOf('.')
-        if (indexOfPoint < 0) {
-            string += '.00'
-        } else {
-            const length = string.substring(indexOfPoint, string.length).length
-            string = Finances.padRight(string, string.length + (3 - length))
-        }
+        string = String(Math.ceil(Number(string)))
         matches = String(string).match(/\d+/g)
         if (matches) {
             return (Math.ceil(parseInt(matches.join(""), 10) * 0.01)).toFixed(2)
