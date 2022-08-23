@@ -5,7 +5,7 @@ export default class Finances {
         if (Types.DiscountTypes[type] === Types.DiscountTypes.PERCENT) {
             result = price * (value / 10000)
         } else if (Types.DiscountTypes[type] === Types.DiscountTypes.VALUE) {
-            result = value < price ? price - value : price
+            result = value < price ? value : price
         }
         result = Math.round(result)
         return isNaN(result) ? 0 : result
