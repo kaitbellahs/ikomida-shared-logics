@@ -1,0 +1,27 @@
+{
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/__tests__/*"
+    ],
+    "compilerOptions": {
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "allowJs": true,
+        "declaration": true,
+        "declarationMap": false,
+        "emitDeclarationOnly": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "outDir": "dist",
+        "declarationDir": "dist",
+        "strict": true,
+        "target": "es6"
+    }
+}
