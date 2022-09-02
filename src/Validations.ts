@@ -1,11 +1,15 @@
 import Finances from './Finances';
 
 export interface IAddress {
+  type: string;
   postalCode: string;
   street: string;
+  number: string;
+  complement?: string;
   neighborhood: string;
   city: string;
   stat: string;
+  reference?: string;
 }
 export default class Validations {
   static validateCPF(cpf: string) {
