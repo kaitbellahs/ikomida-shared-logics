@@ -1,16 +1,6 @@
+import { Interfaces } from '@ikomida/shared-types';
 import Finances from './Finances';
 
-export interface IAddress {
-  type: string;
-  postalCode: string;
-  street: string;
-  number: string;
-  complement?: string;
-  neighborhood: string;
-  city: string;
-  stat: string;
-  reference?: string;
-}
 export default class Validations {
   static validateCPF(cpf: string) {
     let sum = 0;
@@ -86,7 +76,7 @@ export default class Validations {
     return true;
   }
 
-  static validateAddress(object: IAddress) {
+  static validateAddress(object: Interfaces.IAddress) {
     if (!Validations.validateCEP(object?.postalCode)) {
       return [false, 'CEP incorreto'];
     } else if ((object?.street?.length ?? 0) < 3 || (object?.street?.length ?? 0) > 255) {

@@ -1,10 +1,11 @@
-import * as Types from '@ikomida/shared-types';
+import { Types } from "@ikomida/shared-types";
+
 export default class Finances {
-  static calcDiscount(price: number, value: number, type: string): number {
+  static calcDiscount(price: number, value: number, type: Types.TDiscount): number {
     let result = 0;
-    if (new Types.DiscountTypes(type).id === Types.DiscountTypes.PERCENT) {
+    if (type === Types.TDiscount.PERCENT) {
       result = price * (value / 10000);
-    } else if (new Types.DiscountTypes(type).id === Types.DiscountTypes.VALUE) {
+    } else if (type === Types.TDiscount.VALUE) {
       result = value < price ? value : price;
     }
     result = Math.round(result);

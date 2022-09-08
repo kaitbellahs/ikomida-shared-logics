@@ -1,13 +1,5 @@
+import { Interfaces } from '@ikomida/shared-types';
 import { DateTime as Luxon } from 'luxon';
-
-export interface IBusinessTimeHours {
-  start: string;
-  end: string;
-}
-export interface IBusinessTime {
-  days: number[];
-  hours: IBusinessTimeHours[];
-}
 
 export default class DateTime {
   static today() {
@@ -29,7 +21,7 @@ export default class DateTime {
   static localDate(date?: string): Luxon {
     return date ? Luxon.fromISO(date, { zone: 'America/Sao_Paulo' }) : Luxon.local().setZone('America/Sao_Paulo');
   }
-  static isBusinessTime(object: IBusinessTime) {
+  static isBusinessTime(object: Interfaces.IBusinessTime) {
     try {
       const dateTime = new Date(DateTime.localDate().toString());
       if ((object?.days ?? []).includes(dateTime.getDay()) && (object?.hours ?? []).length > 0) {
