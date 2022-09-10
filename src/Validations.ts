@@ -2,7 +2,7 @@ import { Interfaces } from '@ikomida/shared-types';
 import Finances from './Finances';
 
 export default class Validations {
-  static validateCPF(cpf: string) {
+  static validateCPF(cpf?: string) {
     let sum = 0;
     let rest;
     if (
@@ -19,24 +19,24 @@ export default class Validations {
     )
       return false;
 
-    for (let i = 1; i <= 9; i++) sum = sum + (Finances.toNumber(cpf.substring(i - 1, i)) ?? 0) * (11 - i);
+    for (let i = 1; i <= 9; i++) sum = sum + (Finances.toNumber(cpf?.substring(i - 1, i) ?? '') ?? 0) * (11 - i);
     rest = (sum * 10) % 11;
 
     if (rest == 10 || rest == 11) rest = 0;
-    if (rest != Finances.toNumber(cpf.substring(9, 10))) return false;
+    if (rest != Finances.toNumber(cpf?.substring(9, 10) ?? '')) return false;
 
     sum = 0;
-    for (let i = 1; i <= 10; i++) sum = sum + (Finances.toNumber(cpf.substring(i - 1, i)) ?? 0) * (12 - i);
+    for (let i = 1; i <= 10; i++) sum = sum + (Finances.toNumber(cpf?.substring(i - 1, i) ?? '') ?? 0) * (12 - i);
     rest = (sum * 10) % 11;
 
     if (rest == 10 || rest == 11) rest = 0;
-    if (rest != Finances.toNumber(cpf.substring(10, 11))) return false;
+    if (rest != Finances.toNumber(cpf?.substring(10, 11) ?? '')) return false;
     return true;
   }
-  static validateCNPJ(cnpj: string) {
-    cnpj = cnpj.replace(/[^\d]+/g, '');
+  static validateCNPJ(cnpj?: string) {
+    cnpj = cnpj?.replace(/[^\d]+/g, '');
     if (cnpj == '') return false;
-    if (cnpj.length != 14) return false;
+    if (cnpj?.length != 14) return false;
     if (
       cnpj == '00000000000000' ||
       cnpj == '11111111111111' ||
@@ -76,7 +76,7 @@ export default class Validations {
     return true;
   }
 
-  static validateAddress(object: Interfaces.IAddress) {
+  static validateAddress(object?: Interfaces.IAddress) {
     if (!Validations.validateCEP(object?.postalCode)) {
       return [false, 'CEP incorreto'];
     } else if ((object?.street?.length ?? 0) < 3 || (object?.street?.length ?? 0) > 255) {
@@ -90,29 +90,29 @@ export default class Validations {
     }
     return [true, null];
   }
-  static validateEmail(email: string) {
+  static validateEmail(email?: string) {
     return (
       email
-        .toLowerCase()
+        ?.toLowerCase()
         .match(
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         )?.length === 9
     );
   }
-  static validatePassword(password: string) {
-    return password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,40}$/)?.length === 1;
+  static validatePassword(password?: string) {
+    return password?.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,40}$/)?.length === 1;
   }
-  static validatePhone(phone: string | number) {
-    return String(Finances.toNumber(phone)).length === 11;
+  static validatePhone(phone?: string | number) {
+    return String(Finances.toNumber(phone ?? '')).length === 11;
   }
-  static validateUUID(uuid: string) {
-    return uuid.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i)?.length === 1;
+  static validateUUID(uuid?: string) {
+    return uuid?.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i)?.length === 1;
   }
-  static validateCEP(cep: string | number) {
-    return (String(Finances.toNumber(cep))?.length ?? 0) === 8;
+  static validateCEP(cep?: string | number | null) {
+    return (String(Finances.toNumber(cep ?? ''))?.length ?? 0) === 8;
   }
-  static validateDate(string: string) {
-    const date = new Date(string);
+  static validateDate(string?: string) {
+    const date = new Date(string ?? '');
     return date instanceof Date && !isNaN(Number(date));
   }
 }

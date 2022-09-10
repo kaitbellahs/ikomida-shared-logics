@@ -38,7 +38,7 @@ export default [
             resolve({
                 preferBuiltins: false
             }),
-            terser()
+            // terser()
         ],
     },
 ];

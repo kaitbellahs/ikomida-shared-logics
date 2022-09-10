@@ -14,7 +14,7 @@ export default class DateTime {
     return Luxon.local().toFormat("yyyy-MM-dd'T'hh:mm:ss");
   }
 
-  static parseAsaasDate(date: string) {
+  static parseAsaasDate(date?: string) {
     return new Date(DateTime.localDate(date).toString());
   }
 

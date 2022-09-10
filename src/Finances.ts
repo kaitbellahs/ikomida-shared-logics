@@ -21,7 +21,7 @@ export default class Finances {
     return Math.ceil(Math.random() * (max - min + 1) + min);
   }
 
-  static toNumber(string: string | number): number | null {
+  static toNumber(string?: string | number): number | null {
     string = String(string);
     const matches = String(string).match(/\d+/g);
     if (matches) {
@@ -35,7 +35,7 @@ export default class Finances {
     return str.length < max ? Finances.padRight(str + '0', max) : str;
   }
 
-  static toFinanceNumber(string: string | number): number | null {
+  static toFinanceNumber(string?: string | number): number | null {
     string = String(string);
     let matches = String(string).match(/[\d.,]+/g);
     if (matches) {
