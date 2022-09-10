@@ -1,6 +1,6 @@
 {
   "name": "@ikomida/shared-logics",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "This is the shared logics between services, UI and workers etc...",
   "private": false,
   "main": "lib/index.cjs.js",
@@ -33,7 +33,7 @@
   "author": "Khalid Ait Bellahs (Ti Alti Nivel)",
   "license": "UNLICENSED",
   "dependencies": {
-    "@ikomida/shared-types": "^0.0.46",
+    "@ikomida/shared-types": "^0.0.47",
     "luxon": "^3.0.3"
   },
   "devDependencies": {

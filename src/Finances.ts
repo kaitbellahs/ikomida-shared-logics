@@ -1,7 +1,7 @@
 import { Types } from "@ikomida/shared-types";
 
 export default class Finances {
-  static calcDiscount(price: number, value: number, type: Types.TDiscount): number {
+  static calcDiscount(price: number, value: number, type?: Types.TDiscount): number {
     let result = 0;
     if (type === Types.TDiscount.PERCENT) {
       result = price * (value / 10000);
