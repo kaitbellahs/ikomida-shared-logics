@@ -1,4 +1,4 @@
-import { Types } from "@ikomida/shared-types";
+import { Types } from '@ikomida/shared-types';
 
 export default class Finances {
   static calcDiscount(price: number, value: number, type?: Types.TDiscount): number {
