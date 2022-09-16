@@ -13,7 +13,7 @@
     "package.json"
   ],
   "scripts": {
-    "build": "rimraf ./build ./lib ./docs && tsc && rollup -c",
+    "build": "yarn clean && tsc && rollup -c",
     "prebuild:types": "rimraf ./build",
     "build:types": "tsc -p ./tsconfig.json --outDir build && api-extractor run",
     "predoc:jsdoc": "rimraf ./docs",
@@ -23,7 +23,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint . --ext .ts",
     "clean": "rimraf ./build ./lib ./docs",
-    "glogin": "npx google-artifactregistry-auth",
+    "glogin": "artifactregistry-auth",
     "prepare": "yarn build",
     "prepublishOnly": "yarn lint",
     "preversion": "yarn lint",
@@ -47,6 +47,7 @@
     "@typescript-eslint/parser": "^5.36.1",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.5.0",
+    "google-artifactregistry-auth": "^3.0.2",
     "jsdoc": "^3.6.10",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
