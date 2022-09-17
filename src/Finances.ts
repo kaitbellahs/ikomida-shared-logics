@@ -21,11 +21,11 @@ export default class Finances {
     return Math.ceil(Math.random() * (max - min + 1) + min);
   }
 
-  static toNumber(string?: string | number): number | null {
+  static toNumber(string?: string | number): string | null {
     string = String(string);
     const matches = String(string).match(/\d+/g);
     if (matches) {
-      return Number(matches.join(''));
+      return String(matches.join(''));
     }
     return null;
   }

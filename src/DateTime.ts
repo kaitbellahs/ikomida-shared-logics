@@ -1,4 +1,4 @@
-import { Interfaces } from '@ikomida/shared-types';
+import { Classes } from '@ikomida/shared-types';
 import { DateTime as Luxon } from 'luxon';
 
 export default class DateTime {
@@ -21,7 +21,7 @@ export default class DateTime {
   static localDate(date?: string): Luxon {
     return date ? Luxon.fromISO(date, { zone: 'America/Sao_Paulo' }) : Luxon.local().setZone('America/Sao_Paulo');
   }
-  static isBusinessTime(object: Interfaces.IBusinessTime) {
+  static isBusinessTime(object: Classes.CBusinessTime) {
     try {
       const dateTime = new Date(DateTime.localDate().toString());
       if ((object?.days ?? []).includes(dateTime.getDay()) && (object?.hours ?? []).length > 0) {
