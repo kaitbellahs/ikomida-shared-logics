@@ -3,9 +3,9 @@ import { Types } from '@ikomida/shared-types';
 export default class Finances {
   static calcDiscount(price: number, value: number, type?: Types.TDiscount): number {
     let result = 0;
-    if (type === Types.TDiscount.PERCENT) {
+    if (type && Types.TDiscount.PERCENT.equalTo(type)) {
       result = price * (value / 10000);
-    } else if (type === Types.TDiscount.VALUE) {
+    } else if (type && Types.TDiscount.VALUE.equalTo(type)) {
       result = value < price ? value : price;
     }
     result = Math.round(result);
