@@ -1,5 +1,6 @@
 import { Classes } from '@ikomida/shared-types';
 import Finances from './Finances';
+import { version as uuidVersion, validate as uuidValidate } from 'uuid';
 
 export default class Validations {
   static validateCPF(cpf?: string) {
@@ -91,28 +92,25 @@ export default class Validations {
     return [true, null];
   }
   static validateEmail(email?: string) {
-    return (
-      email
-        ?.toLowerCase()
-        .match(
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        )?.length === 9
-    );
+    return email && /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.toLowerCase());
   }
   static validatePassword(password?: string) {
-    return password?.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,40}$/)?.length === 1;
+    return password && /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,40}$/.test(password);
   }
   static validatePhone(phone?: string | number) {
-    return Finances.toNumber(phone ?? '')?.length === 11;
+    return phone && Finances.toNumber(phone)?.length === 11;
   }
   static validateUUID(uuid?: string) {
-    return uuid?.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i)?.length === 1;
+    return uuid && uuidValidate(uuid) && uuidVersion(uuid) === 4;
   }
   static validateCEP(cep?: string | number | null) {
-    return Finances.toNumber(cep ?? '')?.length === 8;
+    return cep && Finances.toNumber(cep)?.length === 8;
   }
   static validateDate(string?: string) {
-    const date = new Date(string ?? '');
+    if (!string) {
+      return false
+    }
+    const date = new Date(string);
     return date instanceof Date && !isNaN(Number(date));
   }
 }
