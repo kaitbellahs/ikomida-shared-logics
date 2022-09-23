@@ -33,7 +33,7 @@
   "author": "Khalid Ait Bellahs (Ti Alti Nivel)",
   "license": "UNLICENSED",
   "dependencies": {
-    "@ikomida/shared-types": "^0.0.121",
+    "@ikomida/shared-types": "^0.0.140",
     "@types/uuid": "^8.3.4",
     "luxon": "^3.0.3",
     "uuid": "^9.0.0"
