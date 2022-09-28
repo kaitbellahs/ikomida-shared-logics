@@ -23,12 +23,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint . --ext .ts",
     "clean": "rimraf ./build ./lib ./docs",
-    "glogin": "artifactregistry-auth",
-    "prepare": "yarn build",
-    "prepublishOnly": "yarn lint",
-    "preversion": "yarn lint",
-    "version": "yarn format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "glogin": "artifactregistry-auth"
   },
   "author": "Khalid Ait Bellahs (Ti Alti Nivel)",
   "license": "UNLICENSED",
