@@ -1,6 +1,6 @@
 {
   "name": "@ikomida/shared-logics",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "This is the shared logics between services, UI and workers etc...",
   "private": false,
   "main": "lib/index.cjs.js",
@@ -13,7 +13,7 @@
     "package.json"
   ],
   "scripts": {
-    "build": "yarn clean && tsc && rollup -c",
+    "build": "yarn clean && rollup -c",
     "prebuild:types": "rimraf ./build",
     "build:types": "tsc -p ./tsconfig.json --outDir build && api-extractor run",
     "predoc:jsdoc": "rimraf ./docs",
@@ -23,30 +23,25 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint . --ext .ts",
     "clean": "rimraf ./build ./lib ./docs",
-    "glogin": "artifactregistry-auth",
-    "prepare": "yarn build",
-    "prepublishOnly": "yarn lint",
-    "preversion": "yarn lint",
-    "version": "yarn format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "glogin": "artifactregistry-auth"
   },
   "author": "Khalid Ait Bellahs (Ti Alti Nivel)",
   "license": "UNLICENSED",
   "dependencies": {
-    "@ikomida/shared-types": "^0.1.8",
+    "@ikomida/shared-types": "^1.0.2",
     "@types/uuid": "^8.3.4",
     "luxon": "^3.0.4",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.31.2",
+    "@microsoft/api-extractor": "^7.32.0",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^14.1.0",
     "@rollup/plugin-typescript": "^8.5.0",
     "@types/luxon": "^3.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.38.1",
-    "@typescript-eslint/parser": "^5.38.1",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "google-artifactregistry-auth": "^3.0.2",
