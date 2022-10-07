@@ -1,6 +1,6 @@
 {
   "name": "@ikomida/shared-logics",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "This is the shared logics between services, UI and workers etc...",
   "private": false,
   "main": "lib/index.cjs.js",
@@ -28,13 +28,17 @@
   },
   "author": "Khalid Ait Bellahs (Ti Alti Nivel)",
   "license": "UNLICENSED",
-  "dependencies": {
+  "peerDependencies": {
+    "@ikomida/shared-types": "*",
+    "@types/uuid": "*",
+    "luxon": "*",
+    "uuid": "*"
+  },
+  "devDependencies": {
     "@ikomida/shared-types": "^1.1.1",
     "@types/uuid": "^8.3.4",
     "luxon": "^3.0.4",
-    "uuid": "^9.0.0"
-  },
-  "devDependencies": {
+    "uuid": "^9.0.0",
     "@microsoft/api-extractor": "^7.32.0",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
