@@ -35,6 +35,10 @@
     "uuid": "*"
   },
   "devDependencies": {
+    "@ikomida/shared-types": "^1.1.1",
+    "@types/uuid": "^8.3.4",
+    "luxon": "^3.0.4",
+    "uuid": "^9.0.0",
     "@microsoft/api-extractor": "^7.32.0",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
