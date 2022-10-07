@@ -1,6 +1,6 @@
 {
   "name": "@ikomida/shared-logics",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "This is the shared logics between services, UI and workers etc...",
   "private": false,
   "main": "lib/index.cjs.js",
@@ -23,12 +23,13 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint . --ext .ts",
     "clean": "rimraf ./build ./lib ./docs",
+    "local": "yarn glogin && ncu -u && yarn && yarn format && yarn lint && yarn build",
     "glogin": "artifactregistry-auth"
   },
   "author": "Khalid Ait Bellahs (Ti Alti Nivel)",
   "license": "UNLICENSED",
   "dependencies": {
-    "@ikomida/shared-types": "^1.0.2",
+    "@ikomida/shared-types": "^1.1.1",
     "@types/uuid": "^8.3.4",
     "luxon": "^3.0.4",
     "uuid": "^9.0.0"
