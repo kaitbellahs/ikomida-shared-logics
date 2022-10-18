@@ -1,6 +1,6 @@
 {
   "name": "@ikomida/shared-logics",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is the shared logics between services, UI and workers etc...",
   "private": false,
   "main": "lib/index.cjs.js",
