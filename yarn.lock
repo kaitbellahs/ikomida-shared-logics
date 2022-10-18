@@ -62,10 +62,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@ikomida/shared-types@^1.3.2":
-  version "1.3.2"
-  resolved "https://us-central1-npm.pkg.dev/ikomida-dev/node/@ikomida/shared-types/-/@ikomida/shared-types-1.3.2.tgz#073a5d81149288f800f390988d06bf267e828bd0"
-  integrity sha512-YWTTJ3pyguWq31PrH5UdVjutqmIgfl7qAVWz7CYAkPtFtRDaI4Gbe47vlIZxLnBL/NHKDVhApMGaZ7jl3GxMRA==
+"@ikomida/shared-types@^1.3.3":
+  version "1.3.3"
+  resolved "https://us-central1-npm.pkg.dev/ikomida-dev/node/@ikomida/shared-types/-/@ikomida/shared-types-1.3.3.tgz#f5a2ffa199c2496417b1554133d767de18957669"
+  integrity sha512-+vRnvskgbA4MGBfAXhItuIr5HBO4ltCry943JnzmawZy9KM8i4Ml5erLdX9Itw2RojF9gzE3YqqKL0M8ygnL1Q==
 
 "@jridgewell/gen-mapping@^0.3.0":
   version "0.3.2"
