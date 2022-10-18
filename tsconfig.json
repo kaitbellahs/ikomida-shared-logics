@@ -1,33 +1,35 @@
 {
     "include": [
-        "./src/**/*"
+        "src/**/*.ts"
     ],
     "exclude": [
-        "node_modules",
-        "**/__tests__/*"
+        "lib/*",
+        "node_modules/*",
+        "**/*.spec.ts"
     ],
     "compilerOptions": {
+        "skipLibCheck": true,
         "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
+            "ESNext",
+            "DOM",
+            "DOM.Iterable"
         ],
-        "moduleResolution": "node",
-        "removeComments": true,
+        "allowJs": false,
         "declaration": true,
-        "module": "esnext",
+        "declarationMap": true,
+        "emitDeclarationOnly": false,
         "noEmitOnError": true,
-        "esModuleInterop": false,
-        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "module": "ESNext",
         "allowSyntheticDefaultImports": true,
-        "allowJs": true,
-        "declarationMap": false,
-        "emitDeclarationOnly": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
         "outDir": "lib",
-        "declarationDir": "lib",
         "strict": true,
-        "target": "es2021",
+        "useDefineForClassFields": false,
+        "target": "ES2021",
         "sourceMap": true,
+        "removeComments": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true
     }
