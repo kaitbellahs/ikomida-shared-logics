@@ -10,24 +10,24 @@ const tsconfig = require('./tsconfig.json')
 
 export default [
     {
-        input: "src/index.ts",
+        input: "src/main.ts",
         output: [
             {
                 inlineDynamicImports: true,
-                file: pkg.main,
+                file: pkg.exports.node.require,
                 format: 'cjs',
                 sourcemap: true,
             },
             {
                 inlineDynamicImports: true,
-                file: pkg.module,
+                file: pkg.exports.node.import,
                 format: 'es',
                 sourcemap: true,
             },
             {
                 inlineDynamicImports: true,
                 name: pkg.name,
-                file: pkg.browser,
+                file: pkg.exports.default,
                 format: "umd",
                 sourcemap: true,
             },
