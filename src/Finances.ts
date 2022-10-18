@@ -49,11 +49,27 @@ export default class Finances {
     return null
   }
 
-  static formatWeight(weight: number): string {
-    if (weight < 1000) {
-      return `${weight} g`
+  static formatMeasure(measure: number, type: Types.TMeasure): string {
+    if (type === Types.TMeasure.GRAM) {
+      if (measure < 1000) {
+        return `${measure} g`
+      } else {
+        return `${(measure / 1000).toFixed(1)} Kg`
+      }
+    } else if (type === Types.TMeasure.CENTIMETER) {
+      if (measure < 100) {
+        return `${measure} cm`
+      } else {
+        return `${(measure / 100).toFixed(1)} m`
+      }
+    } else if (type === Types.TMeasure.MILLILITER) {
+      if (measure < 1000) {
+        return `${measure} ml`
+      } else {
+        return `${(measure / 1000).toFixed(1)} l`
+      }
     } else {
-      return `${(weight / 1000).toFixed(1)} Kg`
+      return `${measure} ?`
     }
   }
 }
