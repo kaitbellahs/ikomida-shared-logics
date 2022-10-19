@@ -51,7 +51,7 @@ export default class Finances {
 
   static formatMeasure(measure: number, type: Types.TMeasure): string {
     if (type === Types.TMeasure.GRAM) {
-      if (measure < 1000) {
+      if (measure < 900) {
         return `${measure} g`
       } else {
         return `${(measure / 1000).toFixed(1)} Kg`
@@ -63,7 +63,7 @@ export default class Finances {
         return `${(measure / 100).toFixed(1)} m`
       }
     } else if (type === Types.TMeasure.MILLILITER) {
-      if (measure < 1000) {
+      if (measure < 900) {
         return `${measure} ml`
       } else {
         return `${(measure / 1000).toFixed(1)} l`
