@@ -1,63 +1,70 @@
 {
   "name": "@ikomida/shared-logics",
-  "version": "0.0.41",
+  "version": "1.0.7",
   "description": "This is the shared logics between services, UI and workers etc...",
   "private": false,
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.esm.js",
-  "browser": "lib/index.browser.js",
-  "types": "lib/index.d.ts",
+  "types": "./lib/main.d.ts",
+  "type": "module",
+  "exports": {
+    "node": {
+      "import": "./lib/main.mjs",
+      "require": "./lib/main.cjs"
+    },
+    "default": "./lib/main.js",
+    "package.json": "./package.json"
+  },
   "files": [
-    "lib/",
-    "README.md",
-    "package.json"
+    "./lib/",
+    "./README.md",
+    "./package.json"
   ],
   "scripts": {
-    "build": "yarn clean && tsc && rollup -c",
+    "build": "yarn clean && rollup -c",
     "prebuild:types": "rimraf ./build",
-    "build:types": "tsc -p ./tsconfig.json --outDir build && api-extractor run",
+    "build:types": "tsc -p ./tsconfig.json --outDir ./build && api-extractor run",
     "predoc:jsdoc": "rimraf ./docs",
     "docs:jsdoc": "jsdoc -r \"src/**/*.ts\" -R README.md -d ./docs",
     "predoc:typedoc": "rimraf ./docs",
-    "docs:typedoc": "typedoc src --out docs",
+    "docs:typedoc": "typedoc src --out ./docs",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint . --ext .ts",
     "clean": "rimraf ./build ./lib ./docs",
-    "glogin": "artifactregistry-auth",
-    "prepare": "yarn build",
-    "prepublishOnly": "yarn lint",
-    "preversion": "yarn lint",
-    "version": "yarn format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "local": "yarn glogin && ncu -u && yarn && yarn format && yarn lint && yarn build",
+    "glogin": "artifactregistry-auth"
   },
   "author": "Khalid Ait Bellahs (Ti Alti Nivel)",
   "license": "UNLICENSED",
   "dependencies": {
-    "@ikomida/shared-types": "^0.0.142",
-    "@types/uuid": "^8.3.4",
-    "luxon": "^3.0.4",
-    "uuid": "^9.0.0"
+    "luxon": "^3.0.4"
+  },
+  "peerDependencies": {
+    "@ikomida/shared-types": "*",
+    "@types/uuid": "*",
+    "uuid": "*"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.31.2",
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^14.1.0",
-    "@rollup/plugin-typescript": "^8.5.0",
-    "@types/luxon": "^3.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.38.0",
-    "@typescript-eslint/parser": "^5.38.0",
-    "eslint": "^8.24.0",
+    "@ikomida/shared-types": "^1.3.7",
+    "@types/uuid": "^8.3.4",
+    "uuid": "^9.0.0",
+    "@microsoft/api-extractor": "^7.33.4",
+    "@rollup/plugin-commonjs": "^23.0.0",
+    "@rollup/plugin-json": "^5.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^9.0.1",
+    "@types/luxon": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "google-artifactregistry-auth": "^3.0.2",
     "jsdoc": "^3.6.11",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.79.1",
+    "rollup": "^3.2.3",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.4.0",
-    "typedoc": "^0.23.15",
-    "typescript": "^4.8.3"
+    "typedoc": "^0.23.17",
+    "typescript": "^4.8.4"
   }
 }
