@@ -1,5 +1,6 @@
 import { Classes } from '@ikomida/shared-types'
 import { DateTime as Luxon } from 'luxon'
+import Finances from './Finances'
 
 export default class DateTime {
   static today() {
@@ -44,5 +45,23 @@ export default class DateTime {
       console.error(e)
     }
     return false
+  }
+  static validateTime(timeString?: string) {
+    if (timeString && timeString.length === 4 && !timeString?.includes(':')) {
+      timeString = timeString.slice(0, 2) + ':' + timeString.slice(2)
+    }
+    const timeArray = timeString?.split(':') ?? []
+    if ((timeArray?.length ?? 0) !== 2) {
+      return false
+    }
+    if (
+      Number(Finances.toNumber(timeArray?.[0])) < 0 ||
+      Number(Finances.toNumber(timeArray?.[0])) > 23 ||
+      Number(Finances.toNumber(timeArray?.[1])) > 59 ||
+      Number(Finances.toNumber(timeArray?.[1])) < 0
+    ) {
+      return false
+    }
+    return true
   }
 }
