@@ -1,6 +1,6 @@
 {
   "name": "@ikomida/shared-logics",
-  "version": "1.0.7",
+  "version": "1.1.2",
   "description": "This is the shared logics between services, UI and workers etc...",
   "private": false,
   "types": "./lib/main.d.ts",
@@ -43,18 +43,18 @@
     "uuid": "*"
   },
   "devDependencies": {
-    "@ikomida/shared-types": "^1.3.7",
+    "@ikomida/shared-types": "^1.3.12",
     "@types/uuid": "^8.3.4",
     "uuid": "^9.0.0",
-    "@microsoft/api-extractor": "^7.33.4",
-    "@rollup/plugin-commonjs": "^23.0.0",
-    "@rollup/plugin-json": "^5.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.0",
-    "@rollup/plugin-typescript": "^9.0.1",
+    "@microsoft/api-extractor": "^7.33.5",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-json": "^5.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^9.0.2",
     "@types/luxon": "^3.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.40.1",
-    "@typescript-eslint/parser": "^5.40.1",
-    "eslint": "^8.25.0",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "google-artifactregistry-auth": "^3.0.2",
     "jsdoc": "^3.6.11",
@@ -64,7 +64,7 @@
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.4.0",
-    "typedoc": "^0.23.17",
+    "typedoc": "^0.23.19",
     "typescript": "^4.8.4"
   }
 }
