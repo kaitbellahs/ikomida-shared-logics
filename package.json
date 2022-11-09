@@ -1,6 +1,6 @@
 {
   "name": "@ikomida/shared-logics",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "This is the shared logics between services, UI and workers etc...",
   "private": false,
   "types": "./lib/main.d.ts",
@@ -43,7 +43,7 @@
     "uuid": "*"
   },
   "devDependencies": {
-    "@ikomida/shared-types": "^1.4.12",
+    "@ikomida/shared-types": "^1.4.14",
     "@types/uuid": "^8.3.4",
     "uuid": "^9.0.0",
     "@microsoft/api-extractor": "^7.33.6",
