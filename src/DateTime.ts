@@ -22,12 +22,14 @@ export default class DateTime {
   static localDate(date?: string): Luxon {
     return date ? Luxon.fromISO(date, { zone: 'America/Sao_Paulo' }) : Luxon.local().setZone('America/Sao_Paulo')
   }
+
   static isBusinessTime(object: Classes.CBusinessTime) {
     try {
-      const dateTime = new Date(DateTime.localDate().toString())
-      if ((object?.days ?? []).includes(dateTime.getDay()) && (object?.hours ?? []).length > 0) {
-        const startDateTime = dateTime
-        const endDateTime = dateTime
+      const dateTime = DateTime.localDate().toString()
+      const nowDateTime = new Date(DateTime.localDate().toString())
+      if ((object?.days ?? []).includes(nowDateTime.getDay()) && (object?.hours ?? []).length > 0) {
+        const startDateTime = new Date(dateTime)
+        const endDateTime = new Date(dateTime)
         for (const hours of object?.hours ?? []) {
           const start = [hours?.start?.substring(0, 2), hours?.start?.substring(2, 4)]
           const end = [hours?.end?.substring(0, 2), hours?.end?.substring(2, 4)]
@@ -35,7 +37,7 @@ export default class DateTime {
           startDateTime.setMinutes(Number(start[1]))
           endDateTime.setHours(Number(end[0]))
           endDateTime.setMinutes(Number(end[1]))
-          if (startDateTime <= dateTime && dateTime <= endDateTime) {
+          if (startDateTime <= nowDateTime && nowDateTime <= endDateTime) {
             return true
           }
         }
