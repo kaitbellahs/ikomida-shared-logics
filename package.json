@@ -1,6 +1,6 @@
 {
   "name": "@ikomida/shared-logics",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "This is the shared logics between services, UI and workers etc...",
   "private": false,
   "types": "./lib/main.d.ts",
@@ -43,28 +43,28 @@
     "uuid": "*"
   },
   "devDependencies": {
-    "@ikomida/shared-types": "^1.7.0",
+    "@ikomida/shared-types": "^1.8.1",
     "@types/uuid": "^9.0.0",
     "uuid": "^9.0.0",
-    "@microsoft/api-extractor": "^7.33.6",
-    "@rollup/plugin-commonjs": "^23.0.3",
-    "@rollup/plugin-json": "^5.0.2",
+    "@microsoft/api-extractor": "^7.33.7",
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^10.0.1",
     "@types/luxon": "^3.1.0",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
-    "@typescript-eslint/parser": "^5.45.0",
-    "eslint": "^8.29.0",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
     "google-artifactregistry-auth": "^3.0.2",
     "jsdoc": "^4.0.0",
-    "prettier": "^2.8.0",
+    "prettier": "^2.8.1",
     "rimraf": "^3.0.2",
-    "rollup": "^3.6.0",
+    "rollup": "^3.8.0",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.4.1",
-    "typedoc": "^0.23.21",
-    "typescript": "^4.9.3"
+    "typedoc": "^0.23.23",
+    "typescript": "^4.9.4"
   }
 }
