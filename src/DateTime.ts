@@ -35,7 +35,9 @@ export default class DateTime {
       }
       const startDateTime = new Date(dateTime)
       const endDateTime = new Date(dateTime)
-      const todayDay = object.filter(businessDay => businessDay.day === nowDateTime.getDay())?.[0]
+      const todayDay = object.filter(
+        businessDay => (businessDay.day === 6 ? 0 : (businessDay.day ?? 0) + 1) === nowDateTime.getDay()
+      )?.[0]
       if (!todayDay) {
         return false
       }
@@ -62,6 +64,7 @@ export default class DateTime {
     }
     return false
   }
+
   static validateTime(timeString?: string) {
     if (timeString && timeString.length === 4 && !timeString?.includes(':')) {
       timeString = timeString.slice(0, 2) + ':' + timeString.slice(2)
