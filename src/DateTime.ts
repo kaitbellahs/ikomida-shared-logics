@@ -23,23 +23,39 @@ export default class DateTime {
     return date ? Luxon.fromISO(date, { zone: 'America/Sao_Paulo' }) : Luxon.local().setZone('America/Sao_Paulo')
   }
 
-  static isBusinessTime(object: Classes.CBusinessTime) {
+  static isBusinessTime(object: Classes.CBusinessTime[]) {
     try {
       const dateTime = DateTime.localDate().toString()
       const nowDateTime = new Date(DateTime.localDate().toString())
-      if ((object?.days ?? []).includes(nowDateTime.getDay()) && (object?.hours ?? []).length > 0) {
-        const startDateTime = new Date(dateTime)
-        const endDateTime = new Date(dateTime)
-        for (const hours of object?.hours ?? []) {
-          const start = [hours?.start?.substring(0, 2), hours?.start?.substring(2, 4)]
-          const end = [hours?.end?.substring(0, 2), hours?.end?.substring(2, 4)]
-          startDateTime.setHours(Number(start[0]))
-          startDateTime.setMinutes(Number(start[1]))
-          endDateTime.setHours(Number(end[0]))
-          endDateTime.setMinutes(Number(end[1]))
-          if (startDateTime <= nowDateTime && nowDateTime <= endDateTime) {
-            return true
-          }
+      if (
+        !(object.flatMap(businessDay => businessDay.day) ?? []).includes(nowDateTime.getDay()) ||
+        (object?.flatMap(businessDay => businessDay.hours) ?? []).length <= 0
+      ) {
+        return false
+      }
+      const startDateTime = new Date(dateTime)
+      const endDateTime = new Date(dateTime)
+      const todayDay = object.filter(
+        businessDay => (businessDay.day === 6 ? 0 : (businessDay.day ?? 0) + 1) === nowDateTime.getDay()
+      )?.[0]
+      if (!todayDay) {
+        return false
+      }
+      for (const hours of todayDay?.hours ?? []) {
+        const start = [
+          hours.start?.substring(0, 2),
+          hours.start?.length === 5 ? hours.start?.substring(3, 5) : hours.start?.substring(2, 4)
+        ]
+        const end = [
+          hours.end?.substring(0, 2),
+          hours.end?.length === 5 ? hours.end?.substring(3, 4) : hours.end?.substring(2, 4)
+        ]
+        startDateTime.setHours(Number(start[0]))
+        startDateTime.setMinutes(Number(start[1]))
+        endDateTime.setHours(Number(end[0]))
+        endDateTime.setMinutes(Number(end[1]))
+        if (startDateTime <= nowDateTime && nowDateTime <= endDateTime) {
+          return true
         }
       }
     } catch (e) {
@@ -48,6 +64,7 @@ export default class DateTime {
     }
     return false
   }
+
   static validateTime(timeString?: string) {
     if (timeString && timeString.length === 4 && !timeString?.includes(':')) {
       timeString = timeString.slice(0, 2) + ':' + timeString.slice(2)
