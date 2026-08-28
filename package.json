@@ -33,7 +33,7 @@
     "glogin": "artifactregistry-auth"
   },
   "author": "Khalid Ait Bellahs (Ti Alti Nivel)",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "dependencies": {
     "luxon": "^3.2.0"
   },
@@ -66,5 +66,9 @@
     "tslib": "^2.4.1",
     "typedoc": "^0.23.23",
     "typescript": "^4.9.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaitbellahs/ikomida-shared-logics.git"
   }
 }
